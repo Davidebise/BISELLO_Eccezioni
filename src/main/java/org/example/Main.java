@@ -4,11 +4,11 @@ void main(){
     try{
         f();
     }catch(Exception e){
-
+        println("Sono nel main: "+e.getMessage());
     }
 }
 
-private void f(){
+private void f() throws Exception {
     g();
 }
 
