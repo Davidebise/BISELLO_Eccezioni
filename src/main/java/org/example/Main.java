@@ -3,19 +3,20 @@ import static java.lang.IO.println;
 void main(){
     try{
         f();
-    }catch(Exception e){
-        println("Sono nel main: "+e.getMessage());
+    }catch(BiselloNotFound e){
+        println("Sono nel main: "+e.getMessage() + "Status Code: " + e.getStatusCode());
+        println(Arrays.toString(e.getStackTrace())); //fa vedere la propagazione
     }
 }
 
-private void f() throws Exception {
+private void f() throws BiselloNotFound {
     g();
 }
 
-private void g() throws Exception {
+private void g() throws BiselloNotFound {
     h();
 }
 
-private void h() throws Exception {
-    throw new Exception("Eccezione lanciata in h");
+private void h() throws BiselloNotFound {
+    throw new BiselloNotFound("Eccezione lanciata in h",8);
 }
